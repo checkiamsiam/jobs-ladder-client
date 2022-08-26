@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { useParams } from 'react-router-dom';
 const MailEmployee = () => {
+    const param = useParams();
+    console.log(param);
     const form = useRef();
     const sendEmail = (e) => {
         e.preventDefault();

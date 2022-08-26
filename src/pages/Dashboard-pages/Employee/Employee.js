@@ -9,14 +9,27 @@ import fetching from "../../../hooks/UseAddUserInfo/fetching";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase-init";
 import useUserRole from "../../../hooks/UseAddUserInfo/useUserRole";
+import { useNavigate } from "react-router-dom";
+import MailEmployee from "./MailEmployee";
 const Employee = () => {
+  const  navigate = useNavigate()
   const [employees, setEmployee] = useState([]);
   const [user] = useAuthState(auth);
   const [role, currentUser] = useUserRole(user);
   const url = `/company/${currentUser?.companySecret}/employee`;
-  useEffect(() => {
-    fetching(url).then((res) => setEmployee(res?.data?.employee));
-  }, [url]);
+  // useEffect(() => {
+  //   fetching(url).then((res) => setEmployee(res?.data?.employee));
+  // }, [url]);
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then((res)=>res.json())
+    .then(data=> setEmployee(data))
+  },[])
+
+  const navigateMailEmployee = (_id)=>{
+    
+    console.log(navigate(`MailEmployee/${_id}`));
+  }
 
   console.log(employees);
 
@@ -74,12 +87,13 @@ const Employee = () => {
                 </a>
               </div>
             </div>
-            <button className="h-11 w-full  bg-primary absolute bottom-0 flex gap-2 justify-center items-center text-xl">
+            <button onClick={()=>navigateMailEmployee(employee?.id)} className="h-11 w-full  bg-primary absolute bottom-0 flex gap-2 justify-center items-center text-xl">
               <BiMailSend className="text-3xl" /> Send Mail
             </button>
           </div>
         </div>
       ))}
+      <MailEmployee></MailEmployee>
     </div>
   );
 };
