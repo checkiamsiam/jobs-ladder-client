@@ -10,7 +10,7 @@ This is the best platform for making understanding and introductions between job
 
 
 ### Server Side Code v1: [https://github.com/checkiamsiam/jobs-ladder-server-v1.0](https://github.com/checkiamsiam/jobs-ladder-server-v1.0)
-### Server Side Code v1: [https://github.com/checkiamsiam/jobs-ladder-server-v2.0](https://github.com/checkiamsiam/jobs-ladder-server-v2.0)
+### Server Side Code v2: [https://github.com/checkiamsiam/jobs-ladder-server-v2.0](https://github.com/checkiamsiam/jobs-ladder-server-v2.0)
 
 <br>
 
